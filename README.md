@@ -28,4 +28,4 @@ To ensure types
 
 To run in preview/production build mode
 
-`pnpm build && pnpm preview`
+`pnpm preview`

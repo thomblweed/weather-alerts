@@ -1,11 +1,10 @@
 import { WeatherAlertsFeature } from '@/features/weather-alerts/ui/WeatherAlertsFeature';
+import { MainLayout } from '@/ui/layouts/MainLayout';
 
-function App() {
-  return (
-    <div>
-      <WeatherAlertsFeature />
-    </div>
-  );
-}
+const App = () => (
+  <MainLayout>
+    <WeatherAlertsFeature />
+  </MainLayout>
+);
 
 export default App;

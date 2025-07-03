@@ -7,7 +7,6 @@ import reactX from 'eslint-plugin-react-x';
 import reactDom from 'eslint-plugin-react-dom';
 import tseslint from 'typescript-eslint';
 import { globalIgnores } from 'eslint/config';
-import viteConfig from './vite.config.mts';
 
 export default tseslint.config([
   globalIgnores(['dist']),
@@ -34,10 +33,9 @@ export default tseslint.config([
     settings: {
       'import/extensions': ['.ts', '.tsx', '.js', '.jsx'],
       'import/resolver': {
-        typescript: true,
-        node: true,
-        vite: {
-          viteConfig,
+        typescript: {
+          alwaysTryTypes: true,
+          project: ['./tsconfig.json'],
         },
       },
     },
