@@ -1,4 +1,4 @@
-import { WeatherAlertsFeature } from './features/weather-alerts/WeatherAlertsFeature';
+import { WeatherAlertsFeature } from '@/features/weather-alerts/ui/WeatherAlertsFeature';
 
 function App() {
   return (
