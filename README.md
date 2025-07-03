@@ -22,6 +22,10 @@ To ensure formatting
 
 `pnpm format`
 
+To ensure types
+
+`pnpm typecheck`
+
 To run in preview/production build mode
 
 `pnpm build && pnpm preview`
