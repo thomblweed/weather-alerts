@@ -41,12 +41,20 @@ export default tseslint.config([
             ['builtin', 'external'],
             ['internal', 'sibling', 'parent'],
             'index',
+            'type',
           ],
           'newlines-between': 'always',
           alphabetize: {
             order: 'asc',
             caseInsensitive: true,
           },
+        },
+      ],
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        {
+          prefer: 'type-imports',
+          disallowTypeAnnotations: true,
         },
       ],
     },
