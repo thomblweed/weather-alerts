@@ -1,10 +1,22 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 import { WeatherAlertsFeature } from '@/features/weather-alerts/ui/WeatherAlertsFeature';
 import { MainLayout } from '@/ui/layouts/MainLayout';
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
+
 const App = () => (
-  <MainLayout>
-    <WeatherAlertsFeature />
-  </MainLayout>
+  <QueryClientProvider client={queryClient}>
+    <MainLayout>
+      <WeatherAlertsFeature />
+    </MainLayout>
+  </QueryClientProvider>
 );
 
 export default App;

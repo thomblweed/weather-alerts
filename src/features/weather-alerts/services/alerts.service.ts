@@ -1,3 +1,4 @@
+import { mapAlertsResponseToAlerts } from './mappers/mapAlertsResponseToAlerts';
 import api from '../../../services/api.service';
 
 import type { AlertsResponse } from '../interfaces/AlertsResponse.interface';
@@ -11,5 +12,7 @@ const alertsOptions = {
 export const getAlerts = async () => {
   const response = await api(alertsOptions).get<AlertsResponse>('/alerts');
 
-  return response.data;
+  return {
+    alerts: mapAlertsResponseToAlerts(response.data),
+  };
 };

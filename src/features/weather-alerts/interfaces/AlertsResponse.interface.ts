@@ -1,3 +1,9 @@
+import type { Category } from '../types/Category.type';
+import type { Certainty } from '../types/Certainty.type';
+import type { Severity } from '../types/Severity.type';
+import type { Status } from '../types/Status.type';
+import type { Urgency } from '../types/Urgency.type';
+
 interface GeoJsonContext {
   '@version'?: string;
   wx?: string;
@@ -35,12 +41,12 @@ interface WeatherAlertProperties {
   onset?: string | null;
   expires: string;
   ends?: string | null;
-  status: string;
+  status: Status;
   messageType: string;
-  category: string;
-  severity: string;
-  certainty: string;
-  urgency: string;
+  category: Category;
+  severity: Severity;
+  certainty: Certainty;
+  urgency: Urgency;
   event: string;
   sender: string;
   senderName: string;

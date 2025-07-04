@@ -5,6 +5,7 @@ import {
 } from '@tanstack/react-table';
 
 import { columns } from './columns';
+import { useAlerts } from '../../hooks/useAlerts';
 import {
   Table,
   TableBody,
@@ -15,8 +16,9 @@ import {
 } from '@/ui/table';
 
 export const AlertsTable = () => {
+  const { alerts } = useAlerts();
   const table = useReactTable({
-    data: [],
+    data: alerts,
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
