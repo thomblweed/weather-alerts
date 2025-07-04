@@ -32,6 +32,12 @@ export default tseslint.config([
     },
     settings: {
       'import/extensions': ['.ts', '.tsx', '.js', '.jsx'],
+      'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
+          project: ['./tsconfig.json'],
+        },
+      },
     },
     rules: {
       'import/order': [
