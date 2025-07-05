@@ -7,6 +7,7 @@ import type { Urgency } from '../types/Urgency.type';
 export interface Alerts {
   id: string;
   sender: string;
+  event: string;
   areaDescription: string;
   status: Status;
   category: Category;

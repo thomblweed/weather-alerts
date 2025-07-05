@@ -2,7 +2,9 @@ import {
   flexRender,
   getCoreRowModel,
   getSortedRowModel,
+  getFilteredRowModel,
   useReactTable,
+  type ColumnFiltersState,
   type SortingState,
 } from '@tanstack/react-table';
 import { useState } from 'react';
@@ -19,24 +21,29 @@ import {
 } from '@/ui/table';
 
 export const AlertsTable = () => {
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [sorting, setSorting] = useState<SortingState>([]);
   const { alerts } = useAlerts();
+
   const table = useReactTable({
     data: alerts,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getRowId: (row) => row.id,
     getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
     onSortingChange: setSorting,
+    onColumnFiltersChange: setColumnFilters,
     state: {
       sorting,
+      columnFilters,
     },
   });
 
   return (
     <div className="flex h-full flex-col overflow-hidden">
       <Table>
-        <TableHeader className="sticky top-0 bg-background">
+        <TableHeader className="sticky top-0 bg-background h-12">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (

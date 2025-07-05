@@ -7,6 +7,7 @@ export const mapAlertsResponseToAlerts = (
   alertsResponse.features.map((alert) => ({
     id: alert.id,
     sender: alert.properties.senderName,
+    event: alert.properties.event,
     areaDescription: alert.properties.areaDesc,
     status: alert.properties.status,
     category: alert.properties.category,
