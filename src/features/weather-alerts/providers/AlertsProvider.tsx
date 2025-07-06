@@ -5,6 +5,7 @@ import {
   AlertsContextValue,
   AlertsContextDateRangeParamsValue,
   SetAlertsContextDateRangeParams,
+  AlertsContextLoadingValue,
 } from '../context/AlertsContext';
 import { getAlerts } from '../services/alerts.service';
 
@@ -13,7 +14,7 @@ export const AlertsProvider = ({ children }: { children: ReactNode }) => {
     start: undefined,
     end: undefined,
   });
-  const { data } = useQuery({
+  const { data, isLoading, isRefetching } = useQuery({
     queryKey: ['alerts', params],
     queryFn: () => getAlerts({ start: params.start, end: params.end }),
   });
@@ -34,11 +35,13 @@ export const AlertsProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <AlertsContextValue value={alertsValue}>
-      <SetAlertsContextDateRangeParams value={handleSetParams}>
-        <AlertsContextDateRangeParamsValue value={paramsValue}>
-          {children}
-        </AlertsContextDateRangeParamsValue>
-      </SetAlertsContextDateRangeParams>
+      <AlertsContextLoadingValue value={isLoading || isRefetching}>
+        <SetAlertsContextDateRangeParams value={handleSetParams}>
+          <AlertsContextDateRangeParamsValue value={paramsValue}>
+            {children}
+          </AlertsContextDateRangeParamsValue>
+        </SetAlertsContextDateRangeParams>
+      </AlertsContextLoadingValue>
     </AlertsContextValue>
   );
 };

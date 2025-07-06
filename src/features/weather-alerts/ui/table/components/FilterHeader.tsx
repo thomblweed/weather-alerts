@@ -39,7 +39,7 @@ export const FilterHeader = <T extends string>({
       <DropdownMenuTrigger asChild>
         <Button variant="ghost">
           {value ? (
-            <span className="ml-1 rounded bg-primary px-1 text-xs text-primary-foreground">
+            <span className="rounded bg-primary px-1 text-xs text-primary-foreground">
               {value}
             </span>
           ) : null}
