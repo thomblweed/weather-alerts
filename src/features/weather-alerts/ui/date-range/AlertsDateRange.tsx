@@ -22,8 +22,8 @@ const AlertsDatePicker = () => {
   const { start, end } = useAlertsDateRangeParams();
 
   return (
-    <div className="flex items-end gap-4">
-      <div className="flex gap-4">
+    <div className="flex items-end gap-4 flex-wrap">
+      <div className="flex gap-4 flex-wrap">
         <DatePicker
           label="Start Date"
           id="start-date"

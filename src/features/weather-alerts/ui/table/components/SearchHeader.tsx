@@ -12,12 +12,13 @@ export const SearchHeader = ({ column, placeholder }: SearchHeaderProps) => {
   return (
     <div className="flex items-center py-4">
       <Input
+        className="min-w-70"
+        type="search"
         placeholder={placeholder}
         value={column.getFilterValue() as string}
         onChange={(event) => {
           column.setFilterValue(event.target.value);
         }}
-        className="max-w-sm"
       />
     </div>
   );

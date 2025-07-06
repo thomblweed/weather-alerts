@@ -17,16 +17,24 @@ const columnHelper = createColumnHelper<Alerts>();
 const headerActionsContainerClass = 'flex items-center gap-1.5';
 
 export const columns = [
-  columnHelper.accessor('area', {
-    id: 'area',
+  columnHelper.accessor('areas', {
+    id: 'areas',
     header: ({ column }) => (
-      <SearchHeader
-        column={column}
-        placeholder="Search and filter Area by text"
-      />
+      <SearchHeader column={column} placeholder="Search and filter Areas" />
     ),
     cell: ({ getValue }) => {
-      return <CellText value={getValue()} />;
+      return (
+        <div className="flex flex-wrap gap-1">
+          {getValue().map((area) => (
+            <CellText key={area} value={area} />
+          ))}
+        </div>
+      );
+    },
+    filterFn: (row, id, value: string) => {
+      const areas: string[] = row.getValue(id);
+      const searchValue = value.toLowerCase();
+      return areas.some((area) => area.toLowerCase().includes(searchValue));
     },
   }),
   columnHelper.accessor('sent', {
