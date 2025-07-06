@@ -3,6 +3,7 @@ import { createColumnHelper } from '@tanstack/react-table';
 import { CellText } from './components/CellText';
 import { FilterHeader } from './components/FilterHeader';
 import { HeaderText } from './components/HeaderText';
+import { SearchHeader } from './components/SearchHeader';
 import { SortHeader } from './components/SortHeader';
 
 import type { Alerts } from '../../interfaces/Alerts.interface';
@@ -18,7 +19,12 @@ const headerActionsContainerClass = 'flex items-center gap-1.5';
 export const columns = [
   columnHelper.accessor('area', {
     id: 'area',
-    header: () => <HeaderText label="Area" />,
+    header: ({ column }) => (
+      <SearchHeader
+        column={column}
+        placeholder="Search and filter Area by text"
+      />
+    ),
     cell: ({ getValue }) => {
       return <CellText value={getValue()} />;
     },
