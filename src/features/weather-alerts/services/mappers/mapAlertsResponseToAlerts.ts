@@ -6,8 +6,12 @@ export const mapAlertsResponseToAlerts = (
 ): Alerts[] =>
   alertsResponse.features.map((alert) => ({
     id: alert.id,
+    area: alert.properties.areaDesc,
     sender: alert.properties.senderName,
-    areaDescription: alert.properties.areaDesc,
+    sent: new Date(alert.properties.sent),
+    effective: new Date(alert.properties.effective),
+    ends: alert.properties.ends ? new Date(alert.properties.ends) : null,
+    event: alert.properties.event,
     status: alert.properties.status,
     category: alert.properties.category,
     severity: alert.properties.severity,

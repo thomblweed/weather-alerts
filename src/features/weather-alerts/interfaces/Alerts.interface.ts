@@ -7,7 +7,11 @@ import type { Urgency } from '../types/Urgency.type';
 export interface Alerts {
   id: string;
   sender: string;
-  areaDescription: string;
+  sent: Date;
+  effective: Date;
+  ends: Date | null;
+  event: string;
+  area: string;
   status: Status;
   category: Category;
   severity: Severity;
