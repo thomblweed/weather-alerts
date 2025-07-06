@@ -1,9 +1,9 @@
 import { use } from 'react';
 
-import { AlertsContext } from '../context/AlertsContext';
+import { AlertsContextValue } from '../context/AlertsContext';
 
 export const useAlerts = () => {
-  const alertsContext = use(AlertsContext);
+  const alertsContext = use(AlertsContextValue);
 
   if (alertsContext === undefined) {
     throw new Error('useAlerts must be used within an AlertsProvider');
