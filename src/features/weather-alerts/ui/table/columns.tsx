@@ -1,6 +1,8 @@
 import { createColumnHelper } from '@tanstack/react-table';
 
+import { CellText } from './components/CellText';
 import { FilterHeader } from './components/FilterHeader';
+import { HeaderText } from './components/HeaderText';
 import { SortHeader } from './components/SortHeader';
 
 import type { Alerts } from '../../interfaces/Alerts.interface';
@@ -11,20 +13,14 @@ import type { Urgency } from '../../types/Urgency.type';
 
 const columnHelper = createColumnHelper<Alerts>();
 
-const headerActionsContainerClass = 'flex items-center gap-2';
+const headerActionsContainerClass = 'flex items-center gap-1.5';
 
 export const columns = [
-  columnHelper.accessor('sender', {
-    id: 'sender',
-    header: ({ column }) => (
-      <SortHeader
-        label="Sender"
-        sorted={column.getIsSorted()}
-        toggleSorting={column.toggleSorting}
-      />
-    ),
+  columnHelper.accessor('area', {
+    id: 'area',
+    header: () => <HeaderText label="Area" />,
     cell: ({ getValue }) => {
-      return <div>{getValue()}</div>;
+      return <CellText value={getValue()} />;
     },
   }),
   columnHelper.accessor('sent', {
@@ -34,9 +30,12 @@ export const columns = [
         label="Sent"
         sorted={column.getIsSorted()}
         toggleSorting={column.toggleSorting}
+        fullWidth
       />
     ),
-    cell: ({ getValue }) => <div>{getValue().toLocaleString()}</div>,
+    cell: ({ getValue }) => (
+      <CellText isSortable value={getValue().toLocaleString()} />
+    ),
   }),
   columnHelper.accessor('status', {
     id: 'status',
@@ -55,14 +54,14 @@ export const columns = [
       </div>
     ),
     cell: ({ getValue }) => {
-      return <div>{getValue()}</div>;
+      return <CellText isSortable value={getValue()} />;
     },
   }),
   columnHelper.accessor('event', {
     id: 'event',
-    header: 'Event',
+    header: () => <HeaderText label="Event" />,
     cell: ({ getValue }) => {
-      return <div>{getValue()}</div>;
+      return <CellText value={getValue()} />;
     },
   }),
   columnHelper.accessor('severity', {
@@ -82,7 +81,7 @@ export const columns = [
       </div>
     ),
     cell: ({ getValue }) => {
-      return <div>{getValue()}</div>;
+      return <CellText isSortable value={getValue()} />;
     },
   }),
   columnHelper.accessor('certainty', {
@@ -102,7 +101,7 @@ export const columns = [
       </div>
     ),
     cell: ({ getValue }) => {
-      return <div>{getValue()}</div>;
+      return <CellText isSortable value={getValue()} />;
     },
   }),
   columnHelper.accessor('urgency', {
@@ -122,7 +121,7 @@ export const columns = [
       </div>
     ),
     cell: ({ getValue }) => {
-      return <div>{getValue()}</div>;
+      return <CellText isSortable value={getValue()} />;
     },
   }),
 ];

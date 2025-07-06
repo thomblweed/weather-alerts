@@ -42,7 +42,7 @@ const AlertsDatePicker = () => {
         />
       </div>
       <Button
-        variant="secondary"
+        disabled={!start && !end}
         onClick={() => {
           setParams({ start: undefined, end: undefined });
         }}
