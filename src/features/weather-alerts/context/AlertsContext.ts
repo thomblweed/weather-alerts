@@ -9,6 +9,7 @@ interface AlertsContextType {
 export const AlertsContextValue = createContext<AlertsContextType | undefined>({
   alerts: [],
 });
+
 export const AlertsContextDateRangeParamsValue = createContext<
   | {
       start?: Date;
@@ -16,6 +17,11 @@ export const AlertsContextDateRangeParamsValue = createContext<
     }
   | undefined
 >(undefined);
+
 export const SetAlertsContextDateRangeParams = createContext<
   ((params: { start?: Date; end?: Date }) => void) | undefined
 >(undefined);
+
+export const AlertsContextLoadingValue = createContext<boolean | undefined>(
+  undefined,
+);
