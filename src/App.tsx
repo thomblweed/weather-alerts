@@ -2,7 +2,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { WeatherAlertsFeature } from '@/features/weather-alerts/ui/WeatherAlertsFeature';
 import { MainLayout } from '@/layouts/MainLayout';
-import { ThemeProvider } from '@/providers/ThemeProvider';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -14,11 +13,9 @@ const queryClient = new QueryClient({
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider defaultTheme="light">
-      <MainLayout>
-        <WeatherAlertsFeature />
-      </MainLayout>
-    </ThemeProvider>
+    <MainLayout>
+      <WeatherAlertsFeature />
+    </MainLayout>
   </QueryClientProvider>
 );
 

@@ -11,7 +11,7 @@ import type { Urgency } from '../../types/Urgency.type';
 
 const columnHelper = createColumnHelper<Alerts>();
 
-const actionContainerClass = 'flex items-center gap-2';
+const headerActionsContainerClass = 'flex items-center gap-2';
 
 export const columns = [
   columnHelper.accessor('sender', {
@@ -27,10 +27,21 @@ export const columns = [
       return <div>{getValue()}</div>;
     },
   }),
+  columnHelper.accessor('sent', {
+    id: 'sent',
+    header: ({ column }) => (
+      <SortHeader
+        label="Sent"
+        sorted={column.getIsSorted()}
+        toggleSorting={column.toggleSorting}
+      />
+    ),
+    cell: ({ getValue }) => <div>{getValue().toLocaleString()}</div>,
+  }),
   columnHelper.accessor('status', {
     id: 'status',
     header: ({ column }) => (
-      <div className={actionContainerClass}>
+      <div className={headerActionsContainerClass}>
         <SortHeader
           label="Status"
           sorted={column.getIsSorted()}
@@ -57,7 +68,7 @@ export const columns = [
   columnHelper.accessor('severity', {
     id: 'severity',
     header: ({ column }) => (
-      <div className={actionContainerClass}>
+      <div className={headerActionsContainerClass}>
         <SortHeader
           label="Severity"
           sorted={column.getIsSorted()}
@@ -77,7 +88,7 @@ export const columns = [
   columnHelper.accessor('certainty', {
     id: 'certainty',
     header: ({ column }) => (
-      <div className={actionContainerClass}>
+      <div className={headerActionsContainerClass}>
         <SortHeader
           label="Certainty"
           sorted={column.getIsSorted()}
@@ -97,7 +108,7 @@ export const columns = [
   columnHelper.accessor('urgency', {
     id: 'urgency',
     header: ({ column }) => (
-      <div className={actionContainerClass}>
+      <div className={headerActionsContainerClass}>
         <SortHeader
           label="Urgency"
           sorted={column.getIsSorted()}

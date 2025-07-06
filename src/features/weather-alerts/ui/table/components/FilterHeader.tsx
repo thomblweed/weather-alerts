@@ -6,6 +6,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/ui/dropdown-menu';
 
@@ -59,7 +60,7 @@ export const FilterHeader = <T extends string>({
         ))}
         {value ? (
           <>
-            <DropdownMenuItem className="h-px bg-muted" disabled />
+            <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={handleClear}
               className="text-destructive"
