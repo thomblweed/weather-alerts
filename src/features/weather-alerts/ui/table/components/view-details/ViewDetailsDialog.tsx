@@ -22,7 +22,7 @@ export const ViewDetailsDialog = ({
   return (
     <Dialog>
       <ViewDetailsAction />
-      <DialogContent>
+      <DialogContent className="max-h-[calc(100vh-5rem)] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>{event}</DialogTitle>
         </DialogHeader>
