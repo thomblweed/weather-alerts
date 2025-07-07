@@ -1,5 +1,7 @@
 # weather-alerts
 
+https://thomblweed.github.io/weather-alerts/
+
 ## Setup
 
 This repository uses [pnpm](https://pnpm.io/installation) as the package manager, version `10.12.4`. It was developed on an environment using [Node version 22.17.0](https://nodejs.org/en/blog/release/v22.17.0)

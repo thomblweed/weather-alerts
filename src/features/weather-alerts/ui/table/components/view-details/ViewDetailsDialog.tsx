@@ -46,7 +46,9 @@ export const ViewDetailsDialog = ({
                 .split('*')
                 .filter(Boolean)
                 .map((line) => (
-                  <p key={line}>{line}</p>
+                  <p key={line} className="py-1">
+                    {line}
+                  </p>
                 ))}
             />
           ) : null}
