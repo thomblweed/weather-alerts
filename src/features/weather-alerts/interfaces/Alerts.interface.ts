@@ -1,3 +1,4 @@
+import type { AlertDetails } from './AlertDetails.interface';
 import type { Category } from '../types/Category.type';
 import type { Certainty } from '../types/Certainty.type';
 import type { Severity } from '../types/Severity.type';
@@ -15,10 +16,5 @@ export interface Alerts {
   severity: Severity;
   certainty: Certainty;
   urgency: Urgency;
-  details: {
-    effective: Date;
-    ends: Date | null;
-    description: string;
-    instruction: string | undefined;
-  };
+  details: AlertDetails;
 }

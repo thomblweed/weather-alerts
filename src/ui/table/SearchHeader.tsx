@@ -1,4 +1,4 @@
-import { Input } from '@/ui/input';
+import { Input } from '@/ui/components/input';
 
 import type { Column } from '@tanstack/react-table';
 
@@ -14,7 +14,7 @@ export const SearchHeader = <T,>({
   return (
     <div className="flex items-center py-4">
       <Input
-        className="min-w-70"
+        className="min-w-50"
         type="search"
         placeholder={placeholder}
         value={column.getFilterValue() as string}

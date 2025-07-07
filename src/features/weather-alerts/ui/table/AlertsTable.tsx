@@ -10,7 +10,7 @@ import {
 } from '@tanstack/react-table';
 import { useState } from 'react';
 
-import { Skeleton } from '@/ui/skeleton';
+import { Skeleton } from '@/ui/components/skeleton';
 import {
   Table,
   TableBody,
@@ -18,7 +18,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/ui/table';
+} from '@/ui/components/table';
 
 import { columns } from './columns';
 import { useAlerts } from '../../hooks/useAlerts';

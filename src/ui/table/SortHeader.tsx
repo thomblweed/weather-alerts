@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { ArrowDown, ArrowUp, ArrowUpDown } from 'lucide-react';
 
-import { Button } from '@/ui/button';
+import { Button } from '@/ui/components/button';
 
 import type { SortDirection } from '@tanstack/react-table';
 

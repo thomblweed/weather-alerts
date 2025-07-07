@@ -1,4 +1,4 @@
-import { Card } from '@/ui/card';
+import { Card } from '@/ui/components/card';
 
 import { AlertsProvider } from '../providers/AlertsProvider';
 import { AlertsDateRange } from './date-range/AlertsDateRange';
