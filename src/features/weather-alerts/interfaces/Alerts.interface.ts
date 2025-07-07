@@ -8,13 +8,17 @@ export interface Alerts {
   id: string;
   sender: string;
   sent: Date;
-  effective: Date;
-  ends: Date | null;
   event: string;
-  area: string;
+  areas: string[];
   status: Status;
   category: Category;
   severity: Severity;
   certainty: Certainty;
   urgency: Urgency;
+  details: {
+    effective: Date;
+    ends: Date | null;
+    description: string;
+    instruction: string | undefined;
+  };
 }

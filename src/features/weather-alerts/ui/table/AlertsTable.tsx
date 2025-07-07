@@ -10,9 +10,6 @@ import {
 } from '@tanstack/react-table';
 import { useState } from 'react';
 
-import { columns } from './columns';
-import { useAlerts } from '../../hooks/useAlerts';
-import { useAlertsLoading } from '../../hooks/useAlertsLoading';
 import { Skeleton } from '@/ui/skeleton';
 import {
   Table,
@@ -22,6 +19,10 @@ import {
   TableHeader,
   TableRow,
 } from '@/ui/table';
+
+import { columns } from './columns';
+import { useAlerts } from '../../hooks/useAlerts';
+import { useAlertsLoading } from '../../hooks/useAlertsLoading';
 
 import type { Alerts } from '../../interfaces/Alerts.interface';
 
@@ -49,7 +50,7 @@ export const AlertsTable = () => {
   return (
     <div className="flex h-full flex-col overflow-hidden">
       <Table>
-        <TableHeader className="sticky top-0 bg-background h-12">
+        <TableHeader className="sticky top-0 bg-background h-12 z-1">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
@@ -90,24 +91,21 @@ const TableSkeletonContent = () =>
     </TableRow>
   ));
 
-const TableContent = ({ table }: { table: TableType<Alerts> }) => (
-  <>
-    {table.getRowModel().rows.length ? (
-      table.getRowModel().rows.map((row) => (
-        <TableRow key={row.id}>
-          {row.getVisibleCells().map((cell) => (
-            <TableCell key={cell.id}>
-              {flexRender(cell.column.columnDef.cell, cell.getContext())}
-            </TableCell>
-          ))}
-        </TableRow>
-      ))
-    ) : (
-      <TableRow>
-        <TableCell colSpan={columns.length} className="h-24 text-center">
-          No results.
-        </TableCell>
+const TableContent = ({ table }: { table: TableType<Alerts> }) =>
+  table.getRowModel().rows.length ? (
+    table.getRowModel().rows.map((row) => (
+      <TableRow key={row.id}>
+        {row.getVisibleCells().map((cell) => (
+          <TableCell key={cell.id}>
+            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+          </TableCell>
+        ))}
       </TableRow>
-    )}
-  </>
-);
+    ))
+  ) : (
+    <TableRow>
+      <TableCell colSpan={columns.length} className="h-24 text-center">
+        No results.
+      </TableCell>
+    </TableRow>
+  );

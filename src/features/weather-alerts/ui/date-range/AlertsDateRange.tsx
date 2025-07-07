@@ -1,7 +1,8 @@
+import { Button } from '@/ui/button';
+import { DatePicker } from '@/ui/form/DatePicker';
+
 import { useAlertsDateRangeParams } from '../../hooks/useAlertsDateRangeParams';
 import { useSetAlertsDateRangeParams } from '../../hooks/useSetAlertsDateRangeParams';
-import { Button } from '@/ui/button';
-import { DatePicker } from '@/ui/components/DatePicker';
 
 export const AlertsDateRange = () => {
   return (
@@ -22,8 +23,8 @@ const AlertsDatePicker = () => {
   const { start, end } = useAlertsDateRangeParams();
 
   return (
-    <div className="flex items-end gap-4">
-      <div className="flex gap-4">
+    <div className="flex items-end gap-4 flex-wrap">
+      <div className="flex gap-4 flex-wrap">
         <DatePicker
           label="Start Date"
           id="start-date"
@@ -42,7 +43,7 @@ const AlertsDatePicker = () => {
         />
       </div>
       <Button
-        variant="secondary"
+        disabled={!start && !end}
         onClick={() => {
           setParams({ start: undefined, end: undefined });
         }}

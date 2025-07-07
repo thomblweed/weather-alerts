@@ -1,7 +1,15 @@
 import { createColumnHelper } from '@tanstack/react-table';
 
-import { FilterHeader } from './components/FilterHeader';
-import { SortHeader } from './components/SortHeader';
+import { CellText } from '@/ui/table/CellText';
+import { FilterHeader } from '@/ui/table/FilterHeader';
+import { HeaderText } from '@/ui/table/HeaderText';
+import { SearchHeader } from '@/ui/table/SearchHeader';
+import { SortHeader } from '@/ui/table/SortHeader';
+
+import { CertaintyCell } from './components/CertaintyCell';
+import { SeverityCell } from './components/SeverityCell';
+import { StatusCell } from './components/StatusCell';
+import { UrgencyCell } from './components/UrgencyCell';
 
 import type { Alerts } from '../../interfaces/Alerts.interface';
 import type { Certainty } from '../../types/Certainty.type';
@@ -11,20 +19,25 @@ import type { Urgency } from '../../types/Urgency.type';
 
 const columnHelper = createColumnHelper<Alerts>();
 
-const headerActionsContainerClass = 'flex items-center gap-2';
+const headerActionsContainerClass = 'flex items-center gap-1.5';
 
 export const columns = [
-  columnHelper.accessor('sender', {
-    id: 'sender',
+  columnHelper.accessor('areas', {
+    id: 'areas',
     header: ({ column }) => (
-      <SortHeader
-        label="Sender"
-        sorted={column.getIsSorted()}
-        toggleSorting={column.toggleSorting}
-      />
+      <SearchHeader column={column} placeholder="Search and filter Areas" />
     ),
-    cell: ({ getValue }) => {
-      return <div>{getValue()}</div>;
+    cell: ({ getValue }) => (
+      <div className="flex flex-wrap gap-1">
+        {getValue().map((area) => (
+          <CellText key={area} value={area} />
+        ))}
+      </div>
+    ),
+    filterFn: (row, id, value: string) => {
+      const areas: string[] = row.getValue(id);
+      const searchValue = value.toLowerCase();
+      return areas.some((area) => area.toLowerCase().includes(searchValue));
     },
   }),
   columnHelper.accessor('sent', {
@@ -34,9 +47,12 @@ export const columns = [
         label="Sent"
         sorted={column.getIsSorted()}
         toggleSorting={column.toggleSorting}
+        fullWidth
       />
     ),
-    cell: ({ getValue }) => <div>{getValue().toLocaleString()}</div>,
+    cell: ({ getValue }) => (
+      <CellText isSortable value={getValue().toLocaleString()} />
+    ),
   }),
   columnHelper.accessor('status', {
     id: 'status',
@@ -54,16 +70,12 @@ export const columns = [
         />
       </div>
     ),
-    cell: ({ getValue }) => {
-      return <div>{getValue()}</div>;
-    },
+    cell: ({ getValue }) => <StatusCell value={getValue()} />,
   }),
   columnHelper.accessor('event', {
     id: 'event',
-    header: 'Event',
-    cell: ({ getValue }) => {
-      return <div>{getValue()}</div>;
-    },
+    header: () => <HeaderText label="Event" />,
+    cell: ({ getValue }) => <CellText value={getValue()} />,
   }),
   columnHelper.accessor('severity', {
     id: 'severity',
@@ -81,9 +93,7 @@ export const columns = [
         />
       </div>
     ),
-    cell: ({ getValue }) => {
-      return <div>{getValue()}</div>;
-    },
+    cell: ({ getValue }) => <SeverityCell value={getValue()} />,
   }),
   columnHelper.accessor('certainty', {
     id: 'certainty',
@@ -101,9 +111,7 @@ export const columns = [
         />
       </div>
     ),
-    cell: ({ getValue }) => {
-      return <div>{getValue()}</div>;
-    },
+    cell: ({ getValue }) => <CertaintyCell value={getValue()} />,
   }),
   columnHelper.accessor('urgency', {
     id: 'urgency',
@@ -121,8 +129,6 @@ export const columns = [
         />
       </div>
     ),
-    cell: ({ getValue }) => {
-      return <div>{getValue()}</div>;
-    },
+    cell: ({ getValue }) => <UrgencyCell value={getValue()} />,
   }),
 ];

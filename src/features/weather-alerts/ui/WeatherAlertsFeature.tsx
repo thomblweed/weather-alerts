@@ -1,7 +1,8 @@
+import { Card } from '@/ui/card';
+
 import { AlertsProvider } from '../providers/AlertsProvider';
 import { AlertsDateRange } from './date-range/AlertsDateRange';
 import { AlertsTable } from './table/AlertsTable';
-import { Card } from '@/ui/card';
 
 export const WeatherAlertsFeature = () => {
   return (
