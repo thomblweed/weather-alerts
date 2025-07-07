@@ -1,5 +1,5 @@
 import { Button } from '@/ui/button';
-import { DatePicker } from '@/ui/components/DatePicker';
+import { DatePicker } from '@/ui/form/DatePicker';
 
 import { useAlertsDateRangeParams } from '../../hooks/useAlertsDateRangeParams';
 import { useSetAlertsDateRangeParams } from '../../hooks/useSetAlertsDateRangeParams';
