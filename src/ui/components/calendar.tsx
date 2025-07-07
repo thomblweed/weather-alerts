@@ -8,7 +8,7 @@ import * as React from 'react';
 import { DayPicker, getDefaultClassNames } from 'react-day-picker';
 
 import { cn } from '@/lib/utils';
-import { Button, buttonVariants } from '@/ui/button';
+import { Button, buttonVariants } from '@/ui/components/button';
 
 import type { DayButton } from 'react-day-picker';
 

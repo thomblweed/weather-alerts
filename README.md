@@ -34,6 +34,6 @@ For full performance, please run this app in preview/production build mode
 
 ## Components and Styling
 
-This app uses [shadcn](https://ui.shadcn.com/) for the components and theme. Each component is installed locally to the [`src/ui/`](./src/ui/) folder as described [here](https://ui.shadcn.com/docs/installation/vite#add-components).
+This app uses [shadcn](https://ui.shadcn.com/) for the components and theme. Each component is installed locally to the [`src/ui/components`](./src/ui/components/) folder as described [here](https://ui.shadcn.com/docs/installation/vite#add-components).
 
 [Tailwind](https://tailwindcss.com/) is used for the styling.

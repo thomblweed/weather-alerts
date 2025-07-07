@@ -10,6 +10,7 @@ import { CertaintyCell } from './components/CertaintyCell';
 import { SeverityCell } from './components/SeverityCell';
 import { StatusCell } from './components/StatusCell';
 import { UrgencyCell } from './components/UrgencyCell';
+import { ViewDetails } from './components/view-details/ViewDetails';
 
 import type { Alerts } from '../../interfaces/Alerts.interface';
 import type { Certainty } from '../../types/Certainty.type';
@@ -27,10 +28,10 @@ export const columns = [
     header: ({ column }) => (
       <SearchHeader column={column} placeholder="Search and filter Areas" />
     ),
-    cell: ({ getValue }) => (
+    cell: ({ getValue, row }) => (
       <div className="flex flex-wrap gap-1">
-        {getValue().map((area) => (
-          <CellText key={area} value={area} />
+        {getValue().map((area, index) => (
+          <CellText key={`${area}-${row.id}-${String(index)}`} value={area} />
         ))}
       </div>
     ),
@@ -130,5 +131,12 @@ export const columns = [
       </div>
     ),
     cell: ({ getValue }) => <UrgencyCell value={getValue()} />,
+  }),
+  columnHelper.display({
+    id: 'actions',
+    header: () => <HeaderText label="Actions" />,
+    cell: ({ row }) => (
+      <ViewDetails details={row.original.details} event={row.original.event} />
+    ),
   }),
 ];

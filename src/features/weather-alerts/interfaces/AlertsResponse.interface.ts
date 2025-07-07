@@ -51,7 +51,7 @@ interface WeatherAlertProperties {
   sender: string;
   senderName: string;
   headline?: string | null;
-  description: string;
+  description: string | null;
   instruction?: string;
   response?: string;
   parameters?: Record<string, string[]>;

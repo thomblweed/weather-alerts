@@ -1,4 +1,4 @@
-import { Button } from '@/ui/button';
+import { Button } from '@/ui/components/button';
 import { DatePicker } from '@/ui/form/DatePicker';
 
 import { useAlertsDateRangeParams } from '../../hooks/useAlertsDateRangeParams';

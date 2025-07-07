@@ -1,10 +1,14 @@
 import { ChevronDownIcon } from 'lucide-react';
 import { useState } from 'react';
 
-import { Button } from '@/ui/button';
-import { Calendar } from '@/ui/calendar';
-import { Label } from '@/ui/label';
-import { Popover, PopoverContent, PopoverTrigger } from '@/ui/popover';
+import { Button } from '@/ui/components/button';
+import { Calendar } from '@/ui/components/calendar';
+import { Label } from '@/ui/components/label';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/ui/components/popover';
 
 interface DatePickerProps {
   label: string;
