@@ -50,7 +50,7 @@ export const AlertsTable = () => {
   return (
     <div className="flex h-full flex-col overflow-hidden">
       <Table>
-        <TableHeader className="sticky top-[-1px] bg-background z-1">
+        <TableHeader className="sticky top-0 bg-background z-1">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
@@ -66,7 +66,7 @@ export const AlertsTable = () => {
             </TableRow>
           ))}
         </TableHeader>
-        <TableBody className="flex-1 overflow-y-auto">
+        <TableBody>
           {isLoading ? (
             <TableSkeletonContent />
           ) : (
