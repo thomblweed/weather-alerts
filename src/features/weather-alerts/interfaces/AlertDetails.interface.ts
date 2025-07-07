@@ -1,6 +1,6 @@
 export interface AlertDetails {
   effective: Date;
   ends: Date | null;
-  description: string;
+  description: string | null;
   instruction: string | undefined;
 }

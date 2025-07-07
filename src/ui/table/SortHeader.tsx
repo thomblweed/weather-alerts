@@ -5,6 +5,8 @@ import { Button } from '@/ui/components/button';
 
 import type { SortDirection } from '@tanstack/react-table';
 
+const iconClassName = 'h-4 w-4';
+
 interface SortHeaderProps {
   label: string;
   sorted: false | SortDirection;
@@ -30,11 +32,11 @@ export const SortHeader = ({
     >
       {label}
       {sorted === false ? (
-        <ArrowUpDown className="ml-2 h-4 w-4" />
+        <ArrowUpDown className={iconClassName} />
       ) : sorted === 'asc' ? (
-        <ArrowUp className="ml-2 h-4 w-4" />
+        <ArrowUp className={iconClassName} />
       ) : (
-        <ArrowDown className="ml-2 h-4 w-4" />
+        <ArrowDown className={iconClassName} />
       )}
     </Button>
   );

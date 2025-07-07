@@ -135,6 +135,8 @@ export const columns = [
   columnHelper.display({
     id: 'actions',
     header: () => <HeaderText label="Actions" />,
-    cell: ({ row }) => <ViewDetails details={row.original.details} />,
+    cell: ({ row }) => (
+      <ViewDetails details={row.original.details} event={row.original.event} />
+    ),
   }),
 ];
