@@ -1,7 +1,8 @@
-import { useAlertsDateRangeParams } from '../../hooks/useAlertsDateRangeParams';
-import { useSetAlertsDateRangeParams } from '../../hooks/useSetAlertsDateRangeParams';
 import { Button } from '@/ui/button';
 import { DatePicker } from '@/ui/components/DatePicker';
+
+import { useAlertsDateRangeParams } from '../../hooks/useAlertsDateRangeParams';
+import { useSetAlertsDateRangeParams } from '../../hooks/useSetAlertsDateRangeParams';
 
 export const AlertsDateRange = () => {
   return (

@@ -1,14 +1,16 @@
 import { Input } from '@/ui/input';
 
-import type { Alerts } from '@/features/weather-alerts/interfaces/Alerts.interface';
 import type { Column } from '@tanstack/react-table';
 
-interface SearchHeaderProps {
-  column: Column<Alerts>;
+interface SearchHeaderProps<T> {
+  column: Column<T>;
   placeholder: string;
 }
 
-export const SearchHeader = ({ column, placeholder }: SearchHeaderProps) => {
+export const SearchHeader = <T,>({
+  column,
+  placeholder,
+}: SearchHeaderProps<T>) => {
   return (
     <div className="flex items-center py-4">
       <Input

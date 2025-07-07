@@ -1,10 +1,15 @@
 import { createColumnHelper } from '@tanstack/react-table';
 
-import { CellText } from './components/CellText';
-import { FilterHeader } from './components/FilterHeader';
-import { HeaderText } from './components/HeaderText';
-import { SearchHeader } from './components/SearchHeader';
-import { SortHeader } from './components/SortHeader';
+import { CellText } from '@/ui/table/CellText';
+import { FilterHeader } from '@/ui/table/FilterHeader';
+import { HeaderText } from '@/ui/table/HeaderText';
+import { SearchHeader } from '@/ui/table/SearchHeader';
+import { SortHeader } from '@/ui/table/SortHeader';
+
+import { CertaintyCell } from './components/CertaintyCell';
+import { SeverityCell } from './components/SeverityCell';
+import { StatusCell } from './components/StatusCell';
+import { UrgencyCell } from './components/UrgencyCell';
 
 import type { Alerts } from '../../interfaces/Alerts.interface';
 import type { Certainty } from '../../types/Certainty.type';
@@ -22,15 +27,13 @@ export const columns = [
     header: ({ column }) => (
       <SearchHeader column={column} placeholder="Search and filter Areas" />
     ),
-    cell: ({ getValue }) => {
-      return (
-        <div className="flex flex-wrap gap-1">
-          {getValue().map((area) => (
-            <CellText key={area} value={area} />
-          ))}
-        </div>
-      );
-    },
+    cell: ({ getValue }) => (
+      <div className="flex flex-wrap gap-1">
+        {getValue().map((area) => (
+          <CellText key={area} value={area} />
+        ))}
+      </div>
+    ),
     filterFn: (row, id, value: string) => {
       const areas: string[] = row.getValue(id);
       const searchValue = value.toLowerCase();
@@ -67,16 +70,12 @@ export const columns = [
         />
       </div>
     ),
-    cell: ({ getValue }) => {
-      return <CellText isSortable value={getValue()} />;
-    },
+    cell: ({ getValue }) => <StatusCell value={getValue()} />,
   }),
   columnHelper.accessor('event', {
     id: 'event',
     header: () => <HeaderText label="Event" />,
-    cell: ({ getValue }) => {
-      return <CellText value={getValue()} />;
-    },
+    cell: ({ getValue }) => <CellText value={getValue()} />,
   }),
   columnHelper.accessor('severity', {
     id: 'severity',
@@ -94,9 +93,7 @@ export const columns = [
         />
       </div>
     ),
-    cell: ({ getValue }) => {
-      return <CellText isSortable value={getValue()} />;
-    },
+    cell: ({ getValue }) => <SeverityCell value={getValue()} />,
   }),
   columnHelper.accessor('certainty', {
     id: 'certainty',
@@ -114,9 +111,7 @@ export const columns = [
         />
       </div>
     ),
-    cell: ({ getValue }) => {
-      return <CellText isSortable value={getValue()} />;
-    },
+    cell: ({ getValue }) => <CertaintyCell value={getValue()} />,
   }),
   columnHelper.accessor('urgency', {
     id: 'urgency',
@@ -134,8 +129,6 @@ export const columns = [
         />
       </div>
     ),
-    cell: ({ getValue }) => {
-      return <CellText isSortable value={getValue()} />;
-    },
+    cell: ({ getValue }) => <UrgencyCell value={getValue()} />,
   }),
 ];

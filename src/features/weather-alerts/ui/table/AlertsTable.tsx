@@ -10,9 +10,6 @@ import {
 } from '@tanstack/react-table';
 import { useState } from 'react';
 
-import { columns } from './columns';
-import { useAlerts } from '../../hooks/useAlerts';
-import { useAlertsLoading } from '../../hooks/useAlertsLoading';
 import { Skeleton } from '@/ui/skeleton';
 import {
   Table,
@@ -22,6 +19,10 @@ import {
   TableHeader,
   TableRow,
 } from '@/ui/table';
+
+import { columns } from './columns';
+import { useAlerts } from '../../hooks/useAlerts';
+import { useAlertsLoading } from '../../hooks/useAlertsLoading';
 
 import type { Alerts } from '../../interfaces/Alerts.interface';
 
