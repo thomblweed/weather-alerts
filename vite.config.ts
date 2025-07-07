@@ -4,6 +4,7 @@ import path from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  base: process.env.NODE_ENV === 'production' ? '/weather-alerts/' : '/',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
