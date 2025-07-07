@@ -46,4 +46,4 @@ This app uses [shadcn](https://ui.shadcn.com/) for the components and theme. Eac
 - Filters state should be lifted to the search params in the url
 - Actions column should be pinned
 - Reset all filters button
-- Mobile view updates as not currently not supported
+- Mobile view updates as not currently supported
